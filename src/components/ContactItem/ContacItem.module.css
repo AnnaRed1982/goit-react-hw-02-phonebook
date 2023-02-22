@@ -7,8 +7,8 @@
 .item p{
     margin: 0;
 }
-.item p:{
-    margin: 0;
+.item p:not(:last-child){
+    margin: 10px 0;
 }
 .delete {
   cursor: pointer;
