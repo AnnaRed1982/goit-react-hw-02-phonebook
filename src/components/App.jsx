@@ -40,18 +40,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
-        <Filter filter={filter} onCnangeFilter={this.changeFilter} />
-
-        {/* <label htmlFor="filter">
-          Find contact by name
-          <input
-            type="text"
-            name="filter"
-            value={filter}
-            onChange={this.changeFilter}
-          />
-        </label> */}
-
+        <Filter value={filter} onCnange={this.changeFilter} />
         <ContactList contacts={contacts} />
       </div>
     );
