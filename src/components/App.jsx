@@ -8,12 +8,13 @@ export class App extends Component {
     number: '',
   };
 
-  addContact = name => {
-    console.log(name);
+  addContact = (name, number) => {
+    console.log(name, number);
 
     const contact = {
       id: nanoid(),
       name,
+      number,
     };
 
     this.setState(({ contacts }) => ({
@@ -23,13 +24,10 @@ export class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const { name, number } = e.target.elements;
     // console.log(this.state);
-    this.addContact(this.state.name);
-    this.setState({ name: '' });
-  };
-
-  handleChange = e => {
-    this.setState({ name: e.currentTarget.value });
+    this.addContact(name.value, number.value);
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -46,8 +44,6 @@ export class App extends Component {
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
-              value={this.state.name}
-              onChange={this.handleChange}
             />
           </label>
 
@@ -69,7 +65,11 @@ export class App extends Component {
 
         <ul>
           {this.state.contacts.map(contact => {
-            return <li key={contact.id}>{contact.name}</li>;
+            return (
+              <li key={contact.id}>
+                {contact.name}:{contact.number}
+              </li>
+            );
           })}
         </ul>
       </div>
