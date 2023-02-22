@@ -34,6 +34,11 @@ export class App extends Component {
   render() {
     const { contacts, filter } = this.state;
 
+    const normalizedFilter = filter.toLowerCase();
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+
     return (
       <div>
         <h1>Phonebook</h1>
@@ -41,7 +46,7 @@ export class App extends Component {
 
         <h2>Contacts</h2>
         <Filter value={filter} onCnange={this.changeFilter} />
-        <ContactList contacts={contacts} />
+        <ContactList contacts={filteredContacts} />
       </div>
     );
   }
