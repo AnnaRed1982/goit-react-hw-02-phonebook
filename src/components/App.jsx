@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from 'components/ContactForm/ContactForm';
+import { ContactList } from 'components/ContactList/ContactList';
 
 export class App extends Component {
   state = {
@@ -8,8 +9,6 @@ export class App extends Component {
   };
 
   addContact = (name, number) => {
-    console.log(name, number);
-
     const contact = {
       id: nanoid(),
       name,
@@ -28,15 +27,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
-        <ul>
-          {this.state.contacts.map(contact => {
-            return (
-              <li key={contact.id}>
-                {contact.name}: {contact.number}
-              </li>
-            );
-          })}
-        </ul>
+        <ContactList contacts={this.state.contacts} />
       </div>
     );
   }
