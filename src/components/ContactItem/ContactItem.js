@@ -1,10 +1,21 @@
 import PropTypes from 'prop-types'
+import css from 'components/ContactItem/ContacItem.module.css'
 
 export const ContactItem = ({ onDelete, name, number }) => {
   return (
-    <div>
-      {name}: {number}
-      <button type="button" onClick={()=>{onDelete(name)}}>Delete</button>
+    <div className={css.item}>
+      <p>{name}:</p>
+      <p>{number}</p>
+
+      <button
+        className={css.delete}
+        type="button"
+        onClick={() => {
+          onDelete(name);
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 };
