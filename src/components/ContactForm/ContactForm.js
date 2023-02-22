@@ -10,6 +10,13 @@ export class ContactForm extends Component {
     e.preventDefault();
     const { name, number } = e.target.elements;
 
+    if (this.props.contacts.find(contact => contact.name === name.value)) {
+      alert(`${name.value} is already in contacts!`);
+      name.value = '';
+      number.value = '';
+      return;
+    }
+
     this.props.onSubmit(name.value, number.value);
 
     name.value = '';

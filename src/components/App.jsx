@@ -41,14 +41,14 @@ export class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
 
     const filteredContacts = this.getVisibleContacts();
 
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact} />
+        <ContactForm contacts={contacts} onSubmit={this.addContact} />
 
         <h2>Contacts</h2>
         <Filter value={filter} onCnange={this.changeFilter} />

@@ -1,11 +1,12 @@
+import { ContactItem } from 'components/ContactItem/ContactItem';
+
 export const ContactList = ({ contacts }) => {
   return (
     <ul>
-      {contacts.map(contact => {
+      {contacts.map(({ id, name, number }) => {
         return (
-          <li key={contact.id}>
-            {contact.name}: {contact.number}{' '}
-            <button type="button">Delete</button>
+          <li key={id}>
+            <ContactItem name={name} number={number} />
           </li>
         );
       })}
