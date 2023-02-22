@@ -27,6 +27,12 @@ export class App extends Component {
     }));
   };
 
+  deleteContact = name => {
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.name !== name),
+    }));
+  };
+
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
@@ -52,7 +58,10 @@ export class App extends Component {
 
         <h2>Contacts</h2>
         <Filter value={filter} onCnange={this.changeFilter} />
-        <ContactList contacts={filteredContacts} />
+        <ContactList
+          onDelete={this.deleteContact}
+          contacts={filteredContacts}
+        />
       </div>
     );
   }

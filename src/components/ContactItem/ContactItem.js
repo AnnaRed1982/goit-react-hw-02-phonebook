@@ -1,8 +1,8 @@
-export const ContactItem = ({ name, number }) => {
+export const ContactItem = ({ onDelete, name, number }) => {
   return (
     <div>
       {name}: {number}
-      <button type="button">Delete</button>
+      <button type="button" onClick={()=>{onDelete(name)}}>Delete</button>
     </div>
   );
 };
