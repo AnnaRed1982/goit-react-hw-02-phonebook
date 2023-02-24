@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import css from 'components/ContactItem/ContacItem.module.css'
 
-export const ContactItem = ({ onDelete, name, number }) => {
+export const ContactItem = ({ onDelete, id, name, number }) => {
   return (
     <div className={css.item}>
       <p>{name}:</p>
@@ -11,7 +11,7 @@ export const ContactItem = ({ onDelete, name, number }) => {
         className={css.delete}
         type="button"
         onClick={() => {
-          onDelete(name);
+          onDelete(id);
         }}
       >
         Delete
@@ -22,6 +22,7 @@ export const ContactItem = ({ onDelete, name, number }) => {
 
 ContactItem.propTypes = {
   onDelete: PropTypes.func,
+  id:PropTypes.string,
   name:PropTypes.string,
   number:PropTypes.string,
 };
