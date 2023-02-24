@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import css from 'components/ContactForm/ContactForm.module.css'
+import css from 'components/ContactForm/ContactForm.module.css';
 
 export class ContactForm extends Component {
   state = {
@@ -13,15 +13,12 @@ export class ContactForm extends Component {
 
     if (this.props.contacts.find(contact => contact.name === name.value)) {
       alert(`${name.value} is already in contacts!`);
-      name.value = '';
-      number.value = '';
+      e.currentTarget.reset();
       return;
     }
 
     this.props.onSubmit(name.value, number.value);
-
-    name.value = '';
-    number.value = '';
+    e.currentTarget.reset();
   };
 
   render() {
@@ -49,7 +46,9 @@ export class ContactForm extends Component {
           />
         </label>
 
-        <button type="submit" className={css.add}>Add contact</button>
+        <button type="submit" className={css.add}>
+          Add contact
+        </button>
       </form>
     );
   }
