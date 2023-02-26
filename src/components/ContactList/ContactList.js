@@ -8,8 +8,9 @@ export const ContactList = ({ onDelete, contacts }) => {
         return (
           <li key={id}>
             <ContactItem
-              onDelete={onDelete}
-              id={id}
+              onDelete={() => {
+                onDelete(id);
+              }}
               name={name}
               number={number}
             />
